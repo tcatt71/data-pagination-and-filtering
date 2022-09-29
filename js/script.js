@@ -24,8 +24,8 @@ function showPage(list, page) {
 
   studentList.innerHTML = '';
 
-  for (let i = startIndex; i < endIndex; i++) {
-    studentList.innerHTML += `
+  for (let i = 0; i >= startIndex && i < endIndex; i++) {
+    const student = `
     <li class="student-item cf">
       <div class="student-details">
         <img class="avatar" src="${list[i].picture.large}" alt="Profile Picture">
@@ -35,7 +35,8 @@ function showPage(list, page) {
       <div class="joined-details">
         <span class="date">Joined ${list[i].registered.date}</span>
       </div>
-    </li>`
+    </li>`;
+    studentList.insertAdjacentHTML('beforeend', student);
   }
 }
 
