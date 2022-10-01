@@ -72,6 +72,28 @@ function addActiveClassToFirstPageButton(listElement) {
   firstPageButton.classList.add('active');
 }
 
+function removeActiveClassFromPreviousButton() {
+  const buttons = document.querySelectorAll('.link-list button');
+
+  for (const button of buttons) {
+    button.classList.remove('active');
+  }
+}
+
+function addActiveClassToCurrentButton(event) {
+  event.target.classList.add('active');
+}
+
+function displayPage(event) {
+  if (event.target.tagName === 'BUTTON') {
+    const page = Number(event.target.textContent);
+
+    removeActiveClassFromPreviousButton();
+    addActiveClassToCurrentButton(event);
+    showPage(data, page);
+  }
+}
+
 /*
 Create the `addPagination` function
 This function will create and insert/append the elements needed for the pagination buttons
@@ -82,20 +104,7 @@ function addPagination(list) {
 
   createPaginationButtons(linkList, numberOfButtons);
   addActiveClassToFirstPageButton(linkList);
-
-  linkList.addEventListener('click', (e) => {
-    if (e.target.tagName === 'BUTTON') {
-      const buttons = linkList.querySelectorAll('button');
-
-      for (const button of buttons) {
-        button.classList.remove('active');
-      }
-
-      e.target.classList.add('active');
-      const page = Number(e.target.textContent);
-      showPage(data, page);
-    }
-  });
+  linkList.addEventListener('click', displayPage);
 }
 
 // Call functions
