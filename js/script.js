@@ -46,13 +46,47 @@ function showPage(list, page) {
   }
 }
 
-
 /*
 Create the `addPagination` function
 This function will create and insert/append the elements needed for the pagination buttons
 */
+function addPagination(list) {
+  let numberOfButtons = list.length / 9;
 
+  if (list.length % 9 !== 0) {
+    numberOfButtons = Math.ceil(numberOfButtons);
+  }
 
+  const linkList = document.querySelector('.link-list');
+
+  linkList.innerHTML = '';
+
+  for (let pageNumber = 1; pageNumber <= numberOfButtons; pageNumber++) {
+    const student = `
+    <li>
+      <button type="button">${pageNumber}</button>
+    </li>`;
+    linkList.insertAdjacentHTML('beforeend', student);
+  }
+
+  const firstPageButton = linkList.querySelector('li:first-child button');
+  firstPageButton.classList.add('active');
+
+  linkList.addEventListener('click', (e) => {
+    if (e.target.tagName === 'BUTTON') {
+      const buttons = linkList.querySelectorAll('button');
+
+      for (const button of buttons) {
+        button.classList.remove('active');
+      }
+
+      e.target.classList.add('active');
+      const page = Number(e.target.textContent);
+      showPage(data, page);
+    }
+  });
+}
 
 // Call functions
 showPage(data, 1);
+addPagination(data);
