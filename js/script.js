@@ -24,7 +24,7 @@ function showPage(list, page) {
 
   studentList.innerHTML = '';
 
-  for (let i = 0; i >= startIndex && i < endIndex; i++) {
+  for (let i = startIndex; i >= startIndex && i < endIndex; i++) {
     const student = `
     <li class="student-item cf">
       <div class="student-details">
