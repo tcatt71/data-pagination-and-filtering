@@ -46,16 +46,21 @@ function showPage(list, page) {
   }
 }
 
+function getNumberOfPaginationButtons(listOfStudents) {
+  let numberOfButtons = listOfStudents.length / 9;
+
+  if (listOfStudents.length % 9 !== 0) {
+    numberOfButtons = Math.ceil(numberOfButtons);
+  }
+  return numberOfButtons;
+}
+
 /*
 Create the `addPagination` function
 This function will create and insert/append the elements needed for the pagination buttons
 */
 function addPagination(list) {
-  let numberOfButtons = list.length / 9;
-
-  if (list.length % 9 !== 0) {
-    numberOfButtons = Math.ceil(numberOfButtons);
-  }
+  const numberOfButtons = getNumberOfPaginationButtons(list);
 
   const linkList = document.querySelector('.link-list');
 
