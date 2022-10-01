@@ -13,10 +13,11 @@ For assistance:
 
 
 
-/*
-Create the `showPage` function
-This function will create and insert/append the elements needed to display a "page" of nine students
-*/
+
+/** Displays the students of a paticular page.
+ * @param {array} list - An array of student objects.
+ * @param {number} page - The pagination button page number.
+ */
 function showPage(list, page) {
   const startIndex = page * 9 - 9;
   let endIndex = getEndingIndex(page, list);
@@ -55,10 +56,9 @@ function displayStudents(startIndex, endIndex, list) {
   }
 }
 
-/*
-Create the `addPagination` function
-This function will create and insert/append the elements needed for the pagination buttons
-*/
+/** Creates and displays pagination buttons
+ * @param {array} list - An array of student objects.
+ */
 function addPagination(list) {
   const linkList = document.querySelector('.link-list');
   const numberOfButtons = getNumberOfPaginationButtons(list);
