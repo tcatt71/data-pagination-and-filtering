@@ -19,13 +19,22 @@ This function will create and insert/append the elements needed to display a "pa
 */
 function showPage(list, page) {
   const startIndex = page * 9 - 9;
+  let endIndex = getEndingIndex(page, list);
+
+  displayStudents(startIndex, endIndex, list);
+}
+
+function getEndingIndex(page, listOfStudents) {
   let endIndex = page * 9;
 
-  if (endIndex > list.length) {
-    const diff = endIndex - list.length;
+  if (endIndex > listOfStudents.length) {
+    const diff = endIndex - listOfStudents.length;
     endIndex -= diff;
   }
+  return endIndex;
+}
 
+function displayStudents(startIndex, endIndex, list) {
   const studentList = document.querySelector('.student-list');
 
   studentList.innerHTML = '';
