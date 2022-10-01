@@ -55,6 +55,19 @@ function displayStudents(startIndex, endIndex, list) {
   }
 }
 
+/*
+Create the `addPagination` function
+This function will create and insert/append the elements needed for the pagination buttons
+*/
+function addPagination(list) {
+  const linkList = document.querySelector('.link-list');
+  const numberOfButtons = getNumberOfPaginationButtons(list);
+
+  createPaginationButtons(linkList, numberOfButtons);
+  addActiveClassToFirstPageButton(linkList);
+  linkList.addEventListener('click', displayPage);
+}
+
 function getNumberOfPaginationButtons(listOfStudents) {
   let numberOfButtons = listOfStudents.length / 9;
 
@@ -81,18 +94,6 @@ function addActiveClassToFirstPageButton(listElement) {
   firstPageButton.classList.add('active');
 }
 
-function removeActiveClassFromPreviousButton() {
-  const buttons = document.querySelectorAll('.link-list button');
-
-  for (const button of buttons) {
-    button.classList.remove('active');
-  }
-}
-
-function addActiveClassToCurrentButton(event) {
-  event.target.classList.add('active');
-}
-
 function displayPage(event) {
   if (event.target.tagName === 'BUTTON') {
     const page = Number(event.target.textContent);
@@ -103,17 +104,16 @@ function displayPage(event) {
   }
 }
 
-/*
-Create the `addPagination` function
-This function will create and insert/append the elements needed for the pagination buttons
-*/
-function addPagination(list) {
-  const linkList = document.querySelector('.link-list');
-  const numberOfButtons = getNumberOfPaginationButtons(list);
+function removeActiveClassFromPreviousButton() {
+  const buttons = document.querySelectorAll('.link-list button');
 
-  createPaginationButtons(linkList, numberOfButtons);
-  addActiveClassToFirstPageButton(linkList);
-  linkList.addEventListener('click', displayPage);
+  for (const button of buttons) {
+    button.classList.remove('active');
+  }
+}
+
+function addActiveClassToCurrentButton(event) {
+  event.target.classList.add('active');
 }
 
 // Call functions
