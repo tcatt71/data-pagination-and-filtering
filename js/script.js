@@ -67,6 +67,11 @@ function createPaginationButtons(listElement, numberOfButtons) {
   }
 }
 
+function addActiveClassToFirstPageButton(listElement) {
+  const firstPageButton = listElement.querySelector('li:first-child button');
+  firstPageButton.classList.add('active');
+}
+
 /*
 Create the `addPagination` function
 This function will create and insert/append the elements needed for the pagination buttons
@@ -76,9 +81,7 @@ function addPagination(list) {
   const numberOfButtons = getNumberOfPaginationButtons(list);
 
   createPaginationButtons(linkList, numberOfButtons);
-
-  const firstPageButton = linkList.querySelector('li:first-child button');
-  firstPageButton.classList.add('active');
+  addActiveClassToFirstPageButton(linkList);
 
   linkList.addEventListener('click', (e) => {
     if (e.target.tagName === 'BUTTON') {
