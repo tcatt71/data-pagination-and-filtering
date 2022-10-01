@@ -55,24 +55,27 @@ function getNumberOfPaginationButtons(listOfStudents) {
   return numberOfButtons;
 }
 
-/*
-Create the `addPagination` function
-This function will create and insert/append the elements needed for the pagination buttons
-*/
-function addPagination(list) {
-  const numberOfButtons = getNumberOfPaginationButtons(list);
-
-  const linkList = document.querySelector('.link-list');
-
-  linkList.innerHTML = '';
+function createPaginationButtons(listElement, numberOfButtons) {
+  listElement.innerHTML = '';
 
   for (let pageNumber = 1; pageNumber <= numberOfButtons; pageNumber++) {
     const student = `
     <li>
       <button type="button">${pageNumber}</button>
     </li>`;
-    linkList.insertAdjacentHTML('beforeend', student);
+    listElement.insertAdjacentHTML('beforeend', student);
   }
+}
+
+/*
+Create the `addPagination` function
+This function will create and insert/append the elements needed for the pagination buttons
+*/
+function addPagination(list) {
+  const linkList = document.querySelector('.link-list');
+  const numberOfButtons = getNumberOfPaginationButtons(list);
+
+  createPaginationButtons(linkList, numberOfButtons);
 
   const firstPageButton = linkList.querySelector('li:first-child button');
   firstPageButton.classList.add('active');
