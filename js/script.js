@@ -62,7 +62,7 @@ function addActiveClassToCurrentButton(event) {
  * @param {array} list - An array of student objects.
  * @param {number} page - The pagination button page number.
  */
- function showPage(list, page) {
+function showPage(list, page) {
   const startIndex = page * 9 - 9;
   let endIndex = getEndingIndex(page, list);
 
