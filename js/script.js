@@ -7,7 +7,15 @@ function addPagination(list) {
 
   createPaginationButtons(linkList, numberOfButtons);
   addActiveClassToFirstPageButton(linkList);
-  linkList.addEventListener('click', displayPage);
+  linkList.addEventListener('click', (e) => {
+    if (e.target.tagName === 'BUTTON') {
+      const page = Number(e.target.textContent);
+
+      removeActiveClassFromPreviousButton();
+      addActiveClassToCurrentButton(e);
+      showPage(list, page);
+    }
+  });
 }
 
 function getNumberOfPaginationButtons(listOfStudents) {
@@ -34,16 +42,6 @@ function createPaginationButtons(listElement, numberOfButtons) {
 function addActiveClassToFirstPageButton(listElement) {
   const firstPageButton = listElement.querySelector('li:first-child button');
   firstPageButton.classList.add('active');
-}
-
-function displayPage(event) {
-  if (event.target.tagName === 'BUTTON') {
-    const page = Number(event.target.textContent);
-
-    removeActiveClassFromPreviousButton();
-    addActiveClassToCurrentButton(event);
-    showPage(data, page);
-  }
 }
 
 function removeActiveClassFromPreviousButton() {
