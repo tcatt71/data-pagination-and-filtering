@@ -1,3 +1,54 @@
+const header = document.querySelector('header');
+const searchBar = `
+<label for="search" class="student-search">
+  <span>Search by name</span>
+  <input id="search" placeholder="Search by name...">
+  <button type="button"><img src="img/icn-search.svg" alt="Search icon"></button>
+</label>`;
+
+header.insertAdjacentHTML('beforeend', searchBar);
+
+const searchBox = header.querySelector('#search');
+const searchButton = header.querySelector('button');
+
+searchBox.addEventListener('keyup', searchForStudents);
+searchButton.addEventListener('click', searchForStudents);
+
+function searchForStudents() {
+  let query = searchBox.value;
+  query = query.toLowerCase();
+
+  const searchResults = [];
+  let hasMatches = false;
+
+  for (const student of data) {
+    const firstName = student.name.first.toLowerCase();
+    const lastName = student.name.last.toLowerCase();
+
+    if (firstName.includes(query)) {
+      searchResults.push(student);
+      hasMatches = true;
+    } else if (lastName.includes(query)) {
+      searchResults.push(student);
+      hasMatches = true;
+    }
+  }
+
+  if (hasMatches) {
+    showPage(searchResults, 1);
+    addPagination(searchResults);
+  } else {
+    handleNoResultsFound();
+  }
+}
+
+function handleNoResultsFound() {
+  const studentList = document.querySelector('.student-list');
+
+  studentList.innerHTML = '<p>No results found</p>';
+  studentList.querySelector('p').style.textAlign = 'left';
+}
+
 /** Creates and displays pagination buttons
  * @param {array} list - An array of student objects.
  */
