@@ -1,18 +1,20 @@
-const header = document.querySelector('header');
-const searchBar = `
-<label for="search" class="student-search">
-  <span>Search by name</span>
-  <input id="search" placeholder="Search by name...">
-  <button type="button"><img src="img/icn-search.svg" alt="Search icon"></button>
-</label>`;
+function createSearchBar() {
+  const header = document.querySelector('header');
+  const searchBar = `
+  <label for="search" class="student-search">
+    <span>Search by name</span>
+    <input id="search" placeholder="Search by name...">
+    <button type="button"><img src="img/icn-search.svg" alt="Search icon"></button>
+  </label>`;
 
-header.insertAdjacentHTML('beforeend', searchBar);
+  header.insertAdjacentHTML('beforeend', searchBar);
 
-const searchBox = header.querySelector('#search');
-const searchButton = header.querySelector('button');
+  const searchBox = header.querySelector('#search');
+  const searchButton = header.querySelector('button');
 
-searchBox.addEventListener('keyup', searchForStudents);
-searchButton.addEventListener('click', searchForStudents);
+  searchBox.addEventListener('keyup', searchForStudents);
+  searchButton.addEventListener('click', searchForStudents);
+}
 
 function searchForStudents() {
   let query = searchBox.value;
@@ -149,5 +151,6 @@ function displayStudents(startIndex, endIndex, list) {
   }
 }
 
+createSearchBar();
 showPage(data, 1);
 addPagination(data);
