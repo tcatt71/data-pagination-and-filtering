@@ -17,9 +17,9 @@ function createSearchBar() {
 }
 
 function searchForStudents() {
-  let query = searchBox.value;
-  query = query.toLowerCase();
+  const searchBox = document.querySelector('#search');
 
+  let query = searchBox.value.toLowerCase();
   const searchResults = [];
   let hasMatches = false;
 
