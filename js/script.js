@@ -49,9 +49,11 @@ function searchForStudents() {
 /** Displays a message when no results are returned when performing a search for students. */
 function handleNoResultsFound() {
   const studentList = document.querySelector('.student-list');
+  const linkList = document.querySelector('.link-list');
 
   studentList.innerHTML = '<p>No results found</p>';
   studentList.querySelector('p').style.textAlign = 'left';
+  linkList.innerHTML = '';
 }
 
 /** Creates and displays pagination buttons
