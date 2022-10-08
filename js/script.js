@@ -56,7 +56,7 @@ function handleNoResultsFound() {
   linkList.innerHTML = '';
 }
 
-/** Creates and displays pagination buttons
+/** Creates and displays pagination buttons.
  * @param {array} list - An array of student objects.
  */
 function addPagination(list) {
