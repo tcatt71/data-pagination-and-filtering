@@ -1,3 +1,4 @@
+/** Creates and displays the Search bar */
 function createSearchBar() {
   const header = document.querySelector('header');
   const searchBar = `
@@ -16,6 +17,7 @@ function createSearchBar() {
   searchButton.addEventListener('click', searchForStudents);
 }
 
+/** Updates the students displayed as a result of a search bar query. */
 function searchForStudents() {
   const searchBox = document.querySelector('#search');
 
@@ -44,6 +46,7 @@ function searchForStudents() {
   }
 }
 
+/** Displays a message when no results are returned when performing a search for students. */
 function handleNoResultsFound() {
   const studentList = document.querySelector('.student-list');
 
