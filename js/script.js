@@ -89,11 +89,11 @@ function createPaginationButtons(listElement, numberOfButtons) {
   listElement.innerHTML = '';
 
   for (let pageNumber = 1; pageNumber <= numberOfButtons; pageNumber++) {
-    const student = `
+    const button = `
     <li>
       <button type="button">${pageNumber}</button>
     </li>`;
-    listElement.insertAdjacentHTML('beforeend', student);
+    listElement.insertAdjacentHTML('beforeend', button);
   }
 }
 
