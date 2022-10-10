@@ -76,6 +76,11 @@ function addPagination(list) {
   });
 }
 
+/**
+ * Gets the number of pagination button to be created.
+ * @param {array} listOfStudents
+ * @returns {number} Number of buttons to be created.
+ */
 function getNumberOfPaginationButtons(listOfStudents) {
   let numberOfButtons = listOfStudents.length / 9;
 
@@ -85,6 +90,11 @@ function getNumberOfPaginationButtons(listOfStudents) {
   return numberOfButtons;
 }
 
+/**
+ * Creates pagination buttons
+ * @param {object} listElement
+ * @param {number} numberOfButtons
+ */
 function createPaginationButtons(listElement, numberOfButtons) {
   listElement.innerHTML = '';
 
@@ -97,11 +107,18 @@ function createPaginationButtons(listElement, numberOfButtons) {
   }
 }
 
+/**
+ * Adds the class active to the buttons class list.
+ * @param {object} listElement
+ */
 function addActiveClassToFirstPageButton(listElement) {
   const firstPageButton = listElement.querySelector('li:first-child button');
   firstPageButton.classList.add('active');
 }
 
+/**
+ * Removes the class active from the buttons class list.
+ */
 function removeActiveClassFromPreviousButton() {
   const buttons = document.querySelectorAll('.link-list button');
 
@@ -110,6 +127,10 @@ function removeActiveClassFromPreviousButton() {
   }
 }
 
+/**
+ * Adds the class active to the button that is clicked.
+ * @param {object} event
+ */
 function addActiveClassToCurrentButton(event) {
   event.target.classList.add('active');
 }
@@ -125,6 +146,12 @@ function showPage(list, page) {
   displayStudents(startIndex, endIndex, list);
 }
 
+/**
+ * Returns the last index number of the page being displayed.
+ * @param {number} page
+ * @param {array} listOfStudents
+ * @returns {number} Last index nuber of the page being displayed.
+ */
 function getEndingIndex(page, listOfStudents) {
   let endIndex = page * 9;
 
@@ -135,6 +162,12 @@ function getEndingIndex(page, listOfStudents) {
   return endIndex;
 }
 
+/**
+ * Creates and displays the students for a paticular page.
+ * @param {number} startIndex
+ * @param {number} endIndex
+ * @param {array} list
+ */
 function displayStudents(startIndex, endIndex, list) {
   const studentList = document.querySelector('.student-list');
 
